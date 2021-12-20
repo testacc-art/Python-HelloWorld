@@ -1,0 +1,41 @@
+name: Setup Python Basic
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  install_and_run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ruby info
+        run: |
+          whereis ruby
+          ruby -v
+      - name: Brew info
+        run: |
+          which brew
+          brew config
+      - name: Uninstall brew
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+
+      - name: Check Brew after it's uninstallation
+        run: |
+          which brew
+          brew config
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+
+      - name: Check Python version
+        run: python -VV
+
+      - run: python main.py
