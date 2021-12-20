@@ -24,7 +24,8 @@ jobs:
 
       - name: Check Brew after it's uninstallation
         run: |
-          which brew
+          command -v brew
+#          which brew
 #          brew config
 
       - name: Checkout
