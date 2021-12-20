@@ -1,4 +1,4 @@
-name: Setup Python Basic
+name: Setup Python w brew uninstalled
 
 on:
   push:
