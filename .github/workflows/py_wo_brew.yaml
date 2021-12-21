@@ -24,6 +24,7 @@ jobs:
 
       - name: Check Brew after it's uninstallation
         run: |
+          echo "which brew: `which brew`"
           command -v brew
 #          which brew
 #          brew config
