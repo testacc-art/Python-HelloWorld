@@ -1,7 +1,7 @@
 name: Setup Python Basic
 
 on:
-  push:
+#  push:
 #    branches:
 #      - master
   workflow_dispatch:

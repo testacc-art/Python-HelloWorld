@@ -22,10 +22,10 @@ jobs:
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 
-      - name: Check Brew after it's uninstallation
-        run: |
-          echo "which brew: `which brew`"
-          command -v brew
+#      - name: Check Brew after it's uninstallation
+#        run: |
+#          echo "which brew: `which brew`"
+#          command -v brew
 #          which brew
 #          brew config
 
