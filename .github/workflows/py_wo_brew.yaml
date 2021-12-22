@@ -8,7 +8,7 @@ on:
 
 jobs:
   install_and_run:
-    runs-on: [macos-11, macos-latest, macos-10.15]
+    runs-on: [macos-latest]
     steps:
       - name: Ruby info
         run: |
@@ -18,6 +18,9 @@ jobs:
         run: |
           which brew
           brew config
+      - name: Find libpython3.11.dylib
+        run: find / -name "libpython*.dylib" 
+        
       - name: Uninstall brew
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
