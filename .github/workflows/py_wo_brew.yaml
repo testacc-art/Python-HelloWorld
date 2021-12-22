@@ -19,8 +19,8 @@ jobs:
           which brew
           brew config
       - name: Find libpython3.11.dylib
-        run: find / -name "libpython*.dylib" 
-        
+        run: find / -name "libpython*.dylib" 2>&1 | grep -v "Permission denied" 
+
       - name: Uninstall brew
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
