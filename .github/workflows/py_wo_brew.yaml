@@ -18,8 +18,11 @@ jobs:
         run: |
           which brew
           brew config
-      - name: Find libpython3.11.dylib
-        run: find / -name "libpython*.dylib" 2>&1 | grep -v "Permission denied" 
+      # - name: Find libpython3.11.dylib
+      #   run: find / -name "libpython*.dylib" 2>&1 | grep -v "Permission denied"
+
+      - name: List Pythons in hostedtoolcache dir
+        run: ls /Users/runner/hostedtoolcache/Python
 
       - name: Uninstall brew
         run: |
