@@ -28,6 +28,13 @@ jobs:
           ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64
           ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64/lib
 
+      - name: List for - libintl.8.dylib
+        run: |
+          echo `ls /usr/local/opt/`
+          echo `ls /usr/local/opt/gettext`
+          echo `ls /usr/local/opt/gettext/lib/`
+          echo `ls /usr/local/opt/gettext/lib/libintl.8.dylib`
+
       # - name: Uninstall brew
       #   run: |
       #     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
@@ -57,6 +64,13 @@ jobs:
           ls -l /Users/runner/hostedtoolcache/Python/3.10.0
           ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64
           ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64/lib
+
+      - name: List for - libintl.8.dylib
+        run: |
+          echo `ls /usr/local/opt/`
+          echo `ls /usr/local/opt/gettext`
+          echo `ls /usr/local/opt/gettext/lib/`
+          echo `ls /usr/local/opt/gettext/lib/libintl.8.dylib`
 
       # - name: Find libpython3.10.dylib - After deletion
       #   run: find / -name "libpython3.10.dylib" 2>&1 | grep -v "Permission denied" | grep -v "No such file or directory" | grep -v "Operation not permitted"
