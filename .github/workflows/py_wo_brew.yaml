@@ -8,7 +8,7 @@ on:
 
 jobs:
   install_and_run:
-    runs-on: [macos-latest]
+    runs-on: [macos-11]
     steps:
       - name: Ruby info
         run: |
@@ -18,11 +18,15 @@ jobs:
         run: |
           which brew
           brew config
-      # - name: Find libpython3.11.dylib
-      #   run: find / -name "libpython*.dylib" 2>&1 | grep -v "Permission denied"
 
-      - name: List Pythons in hostedtoolcache dir
-        run: ls /Users/runner/hostedtoolcache/Python
+      # - name: Find libpython3.10.dylib - Before deletion
+      #   run: find / -name "libpython3.10.dylib" 2>&1 | grep -v "Permission denied" | grep -v "No such file or directory" | grep -v "Operation not permitted"
+
+      - name: List Python content in hostedtoolcache dir - is there that lib
+        run: | 
+          ls -l /Users/runner/hostedtoolcache/Python/3.10.0
+          ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64
+          ls -l /Users/runner/hostedtoolcache/Python/3.10.0/lib
 
       # - name: Uninstall brew
       #   run: |
@@ -45,8 +49,17 @@ jobs:
 
       - name: Uninstall brew
         run: |
-          /bin/bash -c uninstall_brew.sh --skip-cache-and-logs
+          /bin/bash ./uninstall_brew.sh --skip-cache-and-logs
           # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh --skip-cache-and-logs)"
+
+      - name: List Python content in hostedtoolcache dir - is there that lib
+        run: | 
+          ls -l /Users/runner/hostedtoolcache/Python/3.10.0
+          ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64
+          ls -l /Users/runner/hostedtoolcache/Python/3.10.0/lib
+
+      # - name: Find libpython3.10.dylib - After deletion
+      #   run: find / -name "libpython3.10.dylib" 2>&1 | grep -v "Permission denied" | grep -v "No such file or directory" | grep -v "Operation not permitted"
 
       - name: Check Python version
         run: python -VV
