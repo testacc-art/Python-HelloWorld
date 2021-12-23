@@ -45,7 +45,8 @@ jobs:
 
       - name: Uninstall brew
         run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+          /bin/bash -c uninstall_brew.sh --skip-cache-and-logs
+          # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh --skip-cache-and-logs)"
 
       - name: Check Python version
         run: python -VV
