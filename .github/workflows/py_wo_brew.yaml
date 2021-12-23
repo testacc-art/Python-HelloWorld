@@ -56,7 +56,7 @@ jobs:
 
       - name: Uninstall brew
         run: |
-          /bin/bash ./uninstall_brew.sh --skip-cache-and-logs --path=/usr/local/Homebrew
+          sudo /bin/bash ./uninstall_brew.sh --skip-cache-and-logs --path=/usr/local/Homebrew
           # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh --skip-cache-and-logs)"
 
       - name: List Python content in hostedtoolcache dir - is there that lib
