@@ -26,7 +26,7 @@ jobs:
         run: | 
           ls -l /Users/runner/hostedtoolcache/Python/3.10.0
           ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64
-          ls -l /Users/runner/hostedtoolcache/Python/3.10.0/lib
+          ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64/lib
 
       # - name: Uninstall brew
       #   run: |
@@ -56,7 +56,7 @@ jobs:
         run: | 
           ls -l /Users/runner/hostedtoolcache/Python/3.10.0
           ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64
-          ls -l /Users/runner/hostedtoolcache/Python/3.10.0/lib
+          ls -l /Users/runner/hostedtoolcache/Python/3.10.0/x64/lib
 
       - name: Find libpython3.10.dylib - After deletion
         run: find / -name "libpython3.10.dylib" 2>&1 | grep -v "Permission denied" | grep -v "No such file or directory" | grep -v "Operation not permitted"
