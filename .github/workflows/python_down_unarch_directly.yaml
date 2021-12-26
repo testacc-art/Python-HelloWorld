@@ -1,0 +1,33 @@
+name: Download and unarchive gettext directly
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  install_and_run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download 
+        run: wget https://ftp.gnu.org/pub/gnu/gettext/gettext-0.21.tar.gz
+
+      - name: Uninstall brew
+        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+
+      - name: Unarch gettext
+        run: sudo tar -xvf gettext-0.21.tar.gz -C /usr/local/opt/
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+
+      - name: Check Python version
+        run: python -VV
+
+      - run: python main.py
