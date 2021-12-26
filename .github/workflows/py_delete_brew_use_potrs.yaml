@@ -14,8 +14,10 @@ jobs:
         run: | 
           echo "Download MacPort"
           wget https://github.com/macports/macports-base/releases/download/v2.7.1/MacPorts-2.7.1-11-BigSur.pkg
+          echo "ls"
+          ls .
           echo "Install MacPorts"
-          sudo installer -pkg MacPorts-2.7.1-12-Monterey.pkg -target /
+          sudo installer -pkg ./MacPorts-2.7.1-12-Monterey.pkg -target /
           
       - name: Check MacPorts installation
         run: port version
