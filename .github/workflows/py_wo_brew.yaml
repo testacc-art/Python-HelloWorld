@@ -1,7 +1,7 @@
 name: Setup Python w brew uninstalled
 
 on:
-  push:
+  # push:
     # branches:
     #   - master
   workflow_dispatch:
