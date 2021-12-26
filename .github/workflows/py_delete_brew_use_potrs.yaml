@@ -20,8 +20,15 @@ jobs:
           ls .
           echo "Install MacPorts"
           sudo installer -pkg ./MacPorts-2.7.1-11-BigSur.pkg -target /
-          echo "Reload shell"
-          source ~/.bashrc
+
+      - name: Find whereis port
+        run: |
+          echo "which port:  `which port`"
+          echo "ls /opt/local/bin/:  `ls /opt/local/bin/`"
+          echo "ls /opt/local/bin/port:  `ls /opt/local/bin/port`"
+
+      - name: Reload shell
+        run: source ~/.bashrc
           
       - name: Check MacPorts installation
         run: port version
