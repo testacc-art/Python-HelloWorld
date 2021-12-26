@@ -31,7 +31,8 @@ jobs:
         run: alias port=/opt/local/bin/port
 
       - name: Check MacPorts installation
-        run: port version
+        # run: port version
+        run: /opt/local/bin/port version
 
       - name: Uninstall brew
         run: |
