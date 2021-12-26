@@ -27,9 +27,9 @@ jobs:
           echo "ls /opt/local/bin/:  `ls /opt/local/bin/`"
           echo "ls /opt/local/bin/port:  `ls /opt/local/bin/port`"
 
-      - name: Reload shell
-        run: source ~/.bashrc
-          
+      - name: Add port alias
+        run: alias port=/opt/local/bin/port
+
       - name: Check MacPorts installation
         run: port version
 
