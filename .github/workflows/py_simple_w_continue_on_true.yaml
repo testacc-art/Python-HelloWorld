@@ -1,0 +1,43 @@
+name: Setup Python. Delete brew. Install MacPort
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  install_and_run:
+    runs-on: [macos-11]
+    steps:
+      - name: Uninstall brew
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+        continue-on-error: true
+
+      - name: Check Brew after it's uninstallation
+        run: |
+          echo "which brew: `which brew`"
+          command -v brew
+          which brew
+          brew config
+        continue-on-error: true
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10.0" # '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+
+      # - name: Uninstall brew
+      #   run: |
+      #     sudo /bin/bash ./uninstall_brew.sh --skip-cache-and-logs --path=/usr/local/Homebrew
+      #     # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh --skip-cache-and-logs)"
+      #   continue-on-error: true
+
+      - name: Check Python version
+        run: python -VV
+
+      - run: python main.py
