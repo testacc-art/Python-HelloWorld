@@ -45,7 +45,8 @@ jobs:
         continue-on-error: true
           
       - name: Install gettext
-        run: sudo port install gettext
+        # run: sudo port install gettext
+        run: sudo /opt/local/bin/port install gettext
 
       - name: Checkout
         uses: actions/checkout@v2
