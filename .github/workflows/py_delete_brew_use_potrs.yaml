@@ -21,7 +21,7 @@ jobs:
           echo "Install MacPorts"
           sudo installer -pkg ./MacPorts-2.7.1-11-BigSur.pkg -target /
           echo "Reload shell"
-          exec $SHELL
+          source ~/.bashrc
           
       - name: Check MacPorts installation
         run: port version
