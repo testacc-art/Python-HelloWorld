@@ -17,7 +17,9 @@ jobs:
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 
       - name: Unarch gettext
-        run: sudo tar -xvf gettext-0.21.tar.gz -C /usr/local/opt/
+        run: | 
+          mkdir -p /usr/local/opt/
+          sudo tar -xvf gettext-0.21.tar.gz -C /usr/local/opt/
 
       - name: Checkout
         uses: actions/checkout@v2
