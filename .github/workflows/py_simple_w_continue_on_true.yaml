@@ -1,4 +1,4 @@
-name: Setup Python. Delete brew. Install MacPort
+name: Simple with continue-on-error
 
 on:
   push:

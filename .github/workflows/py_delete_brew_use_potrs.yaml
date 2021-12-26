@@ -10,16 +10,6 @@ jobs:
   install_and_run:
     runs-on: [macos-11]
     steps:
-      - name: Uninstall brew
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
-        continue-on-error: true
-
-      - name: Check Brew after it's uninstallation
-        run: |
-          command -v brew
-        continue-on-error: true
-
       - name: Install MacPorts
         run: | 
           echo "Download MacPort"
@@ -29,6 +19,16 @@ jobs:
           
       - name: Check MacPorts installation
         run: port version
+
+      - name: Uninstall brew
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+        continue-on-error: true
+
+      - name: Check Brew after it's uninstallation
+        run: |
+          command -v brew
+        continue-on-error: true
           
       - name: Install gettext
         run: sudo port install gettext
