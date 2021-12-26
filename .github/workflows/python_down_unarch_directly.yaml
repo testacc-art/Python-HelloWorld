@@ -14,7 +14,11 @@ jobs:
         run: wget https://ftp.gnu.org/pub/gnu/gettext/gettext-0.21.tar.gz
 
       - name: Uninstall brew
-        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+        run: | 
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+          sudo rm -rf /usr/local/Homebrew
+          sudo rm -rf /usr/local/Caskroom
+          sudo rm -rf /usr/local/bin/brew
 
       - name: Unarch gettext
         run: | 
