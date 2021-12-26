@@ -19,7 +19,7 @@ jobs:
           echo "ls"
           ls .
           echo "Install MacPorts"
-          sudo installer -pkg ./MacPorts-2.7.1-12-Monterey.pkg -target /
+          sudo installer -pkg ./MacPorts-2.7.1-11-BigSur.pkg -target /
           
       - name: Check MacPorts installation
         run: port version
