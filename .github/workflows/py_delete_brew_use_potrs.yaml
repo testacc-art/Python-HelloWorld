@@ -12,23 +12,10 @@ jobs:
     steps:
       - name: Install MacPorts
         run: |
-          pwd
-          ls .
           echo "Download MacPort"
           wget https://github.com/macports/macports-base/releases/download/v2.7.1/MacPorts-2.7.1-11-BigSur.pkg
-          echo "ls"
-          ls .
           echo "Install MacPorts"
           sudo installer -pkg ./MacPorts-2.7.1-11-BigSur.pkg -target /
-
-      - name: Find whereis port
-        run: |
-          echo "which port:  `which port`"
-          echo "ls /opt/local/bin/:  `ls /opt/local/bin/`"
-          echo "ls /opt/local/bin/port:  `ls /opt/local/bin/port`"
-
-      - name: Add port alias
-        run: alias port=/opt/local/bin/port
 
       - name: Check MacPorts installation
         # run: port version
@@ -39,52 +26,23 @@ jobs:
           sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
         continue-on-error: true
 
-      - name: Check Brew after it's uninstallation
-        run: |
-          command -v brew
-        continue-on-error: true
-          
       - name: Install gettext
         # run: sudo port install gettext
         run: sudo /opt/local/bin/port install gettext
 
-      - name: Where is gettext installed
-        run: | 
-          echo "find gettext"
-          find /opt -name 'gettext'
-          echo ""
-          echo "find libintl.*.dylib"
-          find /opt -name 'libintl.*.dylib'
-          echo ""
-          echo "find gettext in /usr/lcoal"
-          find /usr/local/ -name 'gettext'  2>&1 | grep -v "Permission denied" | grep -v "No such file or directory" | grep -v "Operation not permitted"
-        continue-on-error: true
-
-      - name: list in gettext
-        run: |
-          ls /opt/local/lib/
-        continue-on-error: true
-
-      - name: try to link to correct path in get text
+      - name: Soft link to correct path in gettext
         run: |
           mkdir -p /usr/local/opt/gettext/lib/
           ln -s /opt/local/lib/libintl.8.dylib /usr/local/opt/gettext/lib/
 
       # ------- Must be steps -----------------
-
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Install Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.10.0" # '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-
-      # - name: Uninstall brew
-      #   run: |
-      #     sudo /bin/bash ./uninstall_brew.sh --skip-cache-and-logs --path=/usr/local/Homebrew
-      #     # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh --skip-cache-and-logs)"
-      #   continue-on-error: true
+          python-version: "3.*" # '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
 
       - name: Check Python version
         run: python -VV
