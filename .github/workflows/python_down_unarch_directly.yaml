@@ -1,9 +1,9 @@
 name: Download and unarchive gettext directly
 
 on:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
   workflow_dispatch:
 
 jobs:

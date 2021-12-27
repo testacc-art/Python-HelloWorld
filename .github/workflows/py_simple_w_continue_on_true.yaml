@@ -1,4 +1,4 @@
-name: Simple with continue-on-error
+name: With continue-on-error
 
 on:
   # push:

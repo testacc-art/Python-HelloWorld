@@ -1,9 +1,9 @@
-name: Setup Python. Delete brew. Install MacPort
+name: With MacPort
 
 on:
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -47,6 +47,14 @@ jobs:
       - name: Install gettext
         # run: sudo port install gettext
         run: sudo /opt/local/bin/port install gettext
+
+      - name: Where is gettext installed
+        run: | 
+          echo "find gettext"
+          find /opt -name 'gettext'
+          echo ""
+          echo "find libintl.*.dylib"
+          find /opt -name 'libintl.*.dylib'
 
       - name: Checkout
         uses: actions/checkout@v2
