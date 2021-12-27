@@ -55,6 +55,21 @@ jobs:
           echo ""
           echo "find libintl.*.dylib"
           find /opt -name 'libintl.*.dylib'
+          echo ""
+          echo "find gettext in /usr/lcoal"
+          find /usr/local/ -name 'gettext'
+
+      - name: list in gettext
+        run: |
+          ls /usr/local/opt/gettext/lib/
+        continue-on-error: true
+
+      - name: try to link to correct path in get text
+        run: |
+          mkdir -p /usr/local/opt/gettext/lib/
+          ln -s /opt/local/lib/libintl.8.dylib /usr/local/opt/gettext/lib/
+        
+      # ------- Must be steps -----------------
 
       - name: Checkout
         uses: actions/checkout@v2
