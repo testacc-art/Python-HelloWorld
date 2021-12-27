@@ -17,10 +17,7 @@ jobs:
 
       - name: Check Brew after it's uninstallation
         run: |
-          echo "which brew: `which brew`"
           command -v brew
-          which brew
-          brew config
         continue-on-error: true
 
       - name: Checkout
@@ -29,7 +26,7 @@ jobs:
       - name: Install Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.10.0" # '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          python-version: "3.*" # '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
 
       # - name: Uninstall brew
       #   run: |
