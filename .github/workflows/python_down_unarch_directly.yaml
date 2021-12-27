@@ -23,7 +23,8 @@ jobs:
       - name: Unarch gettext
         run: | 
           sudo mkdir -p /usr/local/opt/
-          sudo tar -xvf gettext-0.21.tar.gz -C /usr/local/opt/gettext
+          sudo tar -xvf gettext-0.21.tar.gz -C /usr/local/opt/
+          sudo mv /usr/local/opt/gettext-0.21 /usr/local/opt/gettext
           
       - name: Run ls
         run: | 
