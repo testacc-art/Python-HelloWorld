@@ -24,6 +24,15 @@ jobs:
         run: | 
           sudo mkdir -p /usr/local/opt/
           sudo tar -xvf gettext-0.21.tar.gz -C /usr/local/opt/
+          
+      - name: Run ls
+        run: | 
+          echo "ls /usr/local/opt/gettext/"
+          ls /usr/local/opt/gettext/
+          echo "/usr/local/opt/gettext/lib/"
+          ls /usr/local/opt/gettext/lib/
+          echo "ls /usr/local/opt/gettext/lib/libintl.8.dylib"
+          ls /usr/local/opt/gettext/lib/libintl.8.dylib
 
       - name: Checkout
         uses: actions/checkout@v2
