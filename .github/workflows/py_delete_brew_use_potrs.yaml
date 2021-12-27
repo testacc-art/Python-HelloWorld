@@ -36,7 +36,7 @@ jobs:
 
       - name: Uninstall brew
         run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+          sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
         continue-on-error: true
 
       - name: Check Brew after it's uninstallation
@@ -62,7 +62,7 @@ jobs:
 
       - name: list in gettext
         run: |
-          ls /usr/local/opt/gettext/lib/
+          ls /opt/local/lib/
         continue-on-error: true
 
       - name: try to link to correct path in get text
