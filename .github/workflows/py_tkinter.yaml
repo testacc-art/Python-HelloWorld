@@ -1,0 +1,28 @@
+name: Basic
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  install_and_run:
+    runs-on: [macos-latest]
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }} 
+
+      - name: Check Python version
+        run: python -VV
+
+      - run: python tkinter_test.py
