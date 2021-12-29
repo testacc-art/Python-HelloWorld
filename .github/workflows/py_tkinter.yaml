@@ -1,4 +1,4 @@
-name: Basic
+name: TKinter
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   install_and_run:
-    runs-on: [macos-latest]
+    runs-on: [macos-latest, ubuntu-latest]
     strategy:
       matrix:
         python-version: ['3.8', '3.9']
