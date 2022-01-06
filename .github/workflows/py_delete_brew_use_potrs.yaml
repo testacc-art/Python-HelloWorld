@@ -26,9 +26,11 @@ jobs:
           sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
         continue-on-error: true
 
-      - name: Install gettext
+      - name: Install gettext and openssl
         # run: sudo port install gettext
-        run: sudo /opt/local/bin/port install gettext
+        run: | 
+          sudo /opt/local/bin/port install gettext
+          sudo /opt/local/bin/port install openssl
 
       - name: Soft link to correct path in gettext
         run: |
