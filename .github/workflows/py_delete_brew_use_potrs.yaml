@@ -1,9 +1,9 @@
 name: With MacPort
 
 on:
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -37,10 +37,12 @@ jobs:
           mkdir -p /usr/local/opt/gettext/lib/
           ln -s /opt/local/lib/libintl.8.dylib /usr/local/opt/gettext/lib/
 
-      - name: Install py310-pip
+      - name: Using py310-pip
         # run: sudo port install gettext
         run: | 
           sudo /opt/local/bin/port install py310-pip
+          sudo py310-pip install pip
+          py310-pip install --user ansible
 
       # ------- Must be steps -----------------
       - name: Checkout
@@ -51,14 +53,16 @@ jobs:
         with:
           python-version: "3.*" # '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
 
+      - name: upgrade pip
+        run: |
+          python -m ensurepip
+          python -m pip install --ignore-installed pip
+      
+
       - name: Check Python version
         run: python -VV
 
       - run: python main.py
-
-      - name: upgrade pip
-        run: |
-          python -m pip install --ignore-installed pip
 
       - name: Install ansible
         run: | 
