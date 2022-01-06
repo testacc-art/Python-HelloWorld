@@ -37,6 +37,11 @@ jobs:
           mkdir -p /usr/local/opt/gettext/lib/
           ln -s /opt/local/lib/libintl.8.dylib /usr/local/opt/gettext/lib/
 
+      - name: Install py310-pip
+        # run: sudo port install gettext
+        run: | 
+          sudo /opt/local/bin/port install py310-pip
+
       # ------- Must be steps -----------------
       - name: Checkout
         uses: actions/checkout@v2
