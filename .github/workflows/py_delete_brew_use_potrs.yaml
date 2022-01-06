@@ -51,4 +51,5 @@ jobs:
 
       - name: Install ansible
         run: | 
-          pip install ansible
+          # pip install ansible
+          python -m pip install --user ansible==4.9.0
