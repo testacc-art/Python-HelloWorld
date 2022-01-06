@@ -23,7 +23,7 @@ jobs:
         # run: port version
         run: | 
           /opt/local/bin/port version
-          command -v port
+          # command -v port
           echo $PATH
         continue-on-error: true
 

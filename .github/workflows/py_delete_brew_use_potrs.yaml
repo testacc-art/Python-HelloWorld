@@ -1,9 +1,9 @@
 name: With MacPort
 
 on:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
   workflow_dispatch:
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
           echo "Install MacPorts"
           sudo installer -pkg ./MacPorts-2.7.1-11-BigSur.pkg -target /
           export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-          
+
       - name: Check MacPorts installation
         # run: port version
         run: /opt/local/bin/port version
