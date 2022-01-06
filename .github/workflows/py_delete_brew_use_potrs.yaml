@@ -1,9 +1,9 @@
 name: With MacPort
 
 on:
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
@@ -48,3 +48,7 @@ jobs:
         run: python -VV
 
       - run: python main.py
+
+      - name: Install ansible
+        run: | 
+          pip install ansible
