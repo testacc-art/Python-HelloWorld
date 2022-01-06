@@ -16,7 +16,8 @@ jobs:
           wget https://github.com/macports/macports-base/releases/download/v2.7.1/MacPorts-2.7.1-11-BigSur.pkg
           echo "Install MacPorts"
           sudo installer -pkg ./MacPorts-2.7.1-11-BigSur.pkg -target /
-
+          export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+          
       - name: Check MacPorts installation
         # run: port version
         run: /opt/local/bin/port version
@@ -26,11 +27,10 @@ jobs:
           sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
         continue-on-error: true
 
-      - name: Install gettext and openssl
+      - name: Install gettext
         # run: sudo port install gettext
         run: | 
           sudo /opt/local/bin/port install gettext
-          sudo /opt/local/bin/port install openssl
 
       - name: Soft link to correct path in gettext
         run: |

@@ -1,0 +1,51 @@
+name: Exprs with MacPorts
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  install_and_run:
+    runs-on: [macos-11]
+    steps:
+      - name: Install MacPorts
+        run: |
+          echo "Download MacPort"
+          wget https://github.com/macports/macports-base/releases/download/v2.7.1/MacPorts-2.7.1-11-BigSur.pkg
+          echo "Install MacPorts"
+          sudo installer -pkg ./MacPorts-2.7.1-11-BigSur.pkg -target /
+          export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+          alias port=/opt/local/bin/port
+
+      - name: Check MacPorts installation
+        # run: port version
+        run: | 
+          /opt/local/bin/port version
+          command -v port
+          echo $PATH
+        continue-on-error: true
+
+      - name: Using py310-pip
+        # run: sudo port install gettext
+        run: | 
+          sudo /opt/local/bin/port install py310-pip
+          sudo py310-pip install pip
+          py310-pip install --user ansible
+
+      # Must be steps
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+
+      - name: Check Python version
+        run: python -VV
+
+      - run: python main.py
+
+      - run: python -m pip install --ignore-installed pip
