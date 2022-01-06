@@ -23,10 +23,14 @@ jobs:
           
           alias port=/opt/local/bin/port
 
+          echo "sudo port install py310-pip"
           sudo port install py310-pip
+          echo "sudo py310-pip install pip"
           sudo py310-pip install pip
-          # sudo port select --set pip pip310
+          echo "py310-pip install --user ansible"
           py310-pip install --user ansible
+
+          # sudo port select --set pip pip310
 
       # - name: Check MacPorts installation
       #   # run: port version
@@ -56,5 +60,5 @@ jobs:
         run: python -VV
 
       - run: python main.py
-      
+
       # - run: python -m pip install --ignore-installed pip
