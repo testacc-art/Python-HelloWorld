@@ -18,6 +18,12 @@ jobs:
           sudo installer -pkg ./MacPorts-2.7.1-11-BigSur.pkg -target /
           export PATH=/opt/local/bin:/opt/local/sbin:$PATH
           
+          echo "ls in port folders"
+          echo "ls /opt/local/bin"
+          ls /opt/local/bin
+          echo "ls /opt/local/sbin"
+          ls /opt/local/sbin
+
           echo "PATH: "
           echo $PATH
           
