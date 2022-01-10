@@ -22,6 +22,9 @@ jobs:
       - run: |
           brew install libxext libxft
           brew reinstall tcl-tk
+          ls /usr/local/Cellar/tcl-tk
+          ln -s /usr/local/Cellar/tcl-tk/8.6.0/lib/libtcl8.6.dylib /usr/local/lib/libtcl8.6.dylib
+          ln -s /usr/local/Cellar/tcl-tk/8.6.0/lib/libtk8.6.dylib /usr/local/lib/libtk8.6.dylib
 
       - name: Install Python
         # uses: actions/setup-python@v2
